@@ -1,0 +1,6 @@
+- id: pretty-format-json5
+  name: Pretty Format JSON5
+  description: This hook checks that all your JSON5 files are pretty.
+  entry: pretty-format-json5
+  language: python
+  files: \.json5$
