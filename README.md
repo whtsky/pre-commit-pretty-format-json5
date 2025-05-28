@@ -17,9 +17,9 @@ A pre-commit hook that checks and formats JSON5 files with proper formatting. Th
 
 ```yaml
 - repo: https://github.com/whtsky/pre-commit-pretty-format-json5
-  rev: '1.0.0'
+  rev: "1.0.0"
   hooks:
-      - id: pretty-format-json5
+    - id: pretty-format-json5
 ```
 
 ### Command Line Usage
@@ -58,13 +58,13 @@ python pretty_format_json5.py --top-keys "name,version,description" package.json
 
 ```json5
 {
-    scripts: {
-        build: 'webpack',
-        test: 'jest',
-    },
-    dependencies: {
-        react: '^18.0.0',
-    },
+  scripts: {
+    build: "webpack",
+    test: "jest",
+  },
+  dependencies: {
+    react: "^18.0.0",
+  },
 }
 ```
 
@@ -72,13 +72,13 @@ python pretty_format_json5.py --top-keys "name,version,description" package.json
 
 ```json5
 {
-    dependencies: {
-        react: '^18.0.0',
-    },
-    scripts: {
-        build: 'webpack',
-        test: 'jest',
-    },
+  dependencies: {
+    react: "^18.0.0",
+  },
+  scripts: {
+    build: "webpack",
+    test: "jest",
+  },
 }
 ```
 
@@ -90,11 +90,11 @@ Perfect for formatting `.vscode/settings.json` files:
 
 ```json5
 {
-    'python.analysis.typeCheckingMode': 'basic',
-    'files.exclude': {
-        '**/__pycache__': true,
-        '**/*.pyc': true,
-    },
+  "python.analysis.typeCheckingMode": "basic",
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+  },
 }
 ```
 
@@ -102,11 +102,11 @@ Perfect for formatting `.vscode/settings.json` files:
 
 ```json5
 {
-    'files.exclude': {
-        '**/*.pyc': true,
-        '**/__pycache__': true,
-    },
-    'python.analysis.typeCheckingMode': 'basic',
+  "files.exclude": {
+    "**/*.pyc": true,
+    "**/__pycache__": true,
+  },
+  "python.analysis.typeCheckingMode": "basic",
 }
 ```
 
