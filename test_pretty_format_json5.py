@@ -331,7 +331,12 @@ def test_vscode_settings_formatting():
 
     # Test the formatting
     result = _get_pretty_format(
-        input_json5, indent=2, ensure_ascii=False, sort_keys=True, top_keys=[]
+        input_json5,
+        indent=2,
+        ensure_ascii=False,
+        sort_keys=True,
+        top_keys=[],
+        is_json5=True,
     )
 
     # Normalize whitespace for comparison
@@ -370,7 +375,12 @@ def test_unquoted_keys_in_nested_objects():
 }"""
 
     result = _get_pretty_format(
-        input_json5, indent=2, ensure_ascii=False, sort_keys=True, top_keys=[]
+        input_json5,
+        indent=2,
+        ensure_ascii=False,
+        sort_keys=True,
+        top_keys=[],
+        is_json5=True,
     )
 
     # Should have unquoted keys for valid identifiers
@@ -393,7 +403,12 @@ def test_trailing_commas():
 }"""
 
     result = _get_pretty_format(
-        input_json5, indent=2, ensure_ascii=False, sort_keys=True, top_keys=[]
+        input_json5,
+        indent=2,
+        ensure_ascii=False,
+        sort_keys=True,
+        top_keys=[],
+        is_json5=True,
     )
 
     # Should have trailing commas
@@ -414,7 +429,12 @@ def test_mixed_quoted_unquoted_keys():
 }"""
 
     result = _get_pretty_format(
-        input_json5, indent=2, ensure_ascii=False, sort_keys=True, top_keys=[]
+        input_json5,
+        indent=2,
+        ensure_ascii=False,
+        sort_keys=True,
+        top_keys=[],
+        is_json5=True,
     )
 
     # Keys that are valid identifiers should be unquoted
@@ -425,6 +445,33 @@ def test_mixed_quoted_unquoted_keys():
     assert '"123key": "value3"' in result
     assert '"invalid.key": "value2"' in result
     assert '"valid-identifier": "value1"' in result
+
+
+def test_json_files_quote_all_keys():
+    """Test that JSON files (not JSON5) have all keys quoted."""
+
+    input_json = """{
+    "schemas": [
+        {
+            "fileMatch": ["*.json"],
+            "url": "schema.json"
+        }
+    ]
+}"""
+
+    result = _get_pretty_format(
+        input_json,
+        indent=2,
+        ensure_ascii=False,
+        sort_keys=True,
+        top_keys=[],
+        is_json5=False,
+    )
+
+    # All keys should be quoted for JSON files
+    assert '"fileMatch": [' in result
+    assert '"url": "schema.json"' in result
+    assert '"schemas": [' in result
 
 
 if __name__ == "__main__":

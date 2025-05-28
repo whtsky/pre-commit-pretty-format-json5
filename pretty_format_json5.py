@@ -34,6 +34,7 @@ def _format_value(
     ensure_ascii: bool,
     sort_keys: bool,
     top_keys: Sequence[str],
+    is_json5: bool = True,
 ) -> str:
     """Format a JSON5 value with proper indentation and type handling."""
     if value is None:
@@ -57,7 +58,13 @@ def _format_value(
         items = []
         for item in value:
             formatted_item = _format_value(
-                item, indent_level + 1, indent_str, ensure_ascii, sort_keys, top_keys
+                item,
+                indent_level + 1,
+                indent_str,
+                ensure_ascii,
+                sort_keys,
+                top_keys,
+                is_json5,
             )
             items.append(f"{indent_str * (indent_level + 1)}{formatted_item}")
 
@@ -80,11 +87,18 @@ def _format_value(
         formatted_items = []
         for key, val in sorted_items:
             formatted_val = _format_value(
-                val, indent_level + 1, indent_str, ensure_ascii, sort_keys, top_keys
+                val,
+                indent_level + 1,
+                indent_str,
+                ensure_ascii,
+                sort_keys,
+                top_keys,
+                is_json5,
             )
 
-            # Determine if key needs quotes - use unquoted keys when possible
-            if _is_valid_identifier(key):
+            # Determine if key needs quotes - for JSON files, always quote keys
+            # For JSON5 files, use unquoted keys when possible for valid identifiers
+            if is_json5 and _is_valid_identifier(key):
                 formatted_key = key
             else:
                 formatted_key = json5.dumps(key, ensure_ascii=ensure_ascii)
@@ -118,6 +132,7 @@ def _get_pretty_format(
     ensure_ascii: bool = True,
     sort_keys: bool = True,
     top_keys: Sequence[str] = (),
+    is_json5: bool = True,
 ) -> str:
     # Parse the JSON5 content
     try:
@@ -132,7 +147,9 @@ def _get_pretty_format(
         indent_str = str(indent)
 
     # Format the content
-    formatted = _format_value(parsed, 0, indent_str, ensure_ascii, sort_keys, top_keys)
+    formatted = _format_value(
+        parsed, 0, indent_str, ensure_ascii, sort_keys, top_keys, is_json5
+    )
 
     # Try to preserve comments
     formatted = _preserve_comments(contents, formatted)
@@ -213,6 +230,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         with open(json_file, encoding="UTF-8") as f:
             contents = f.read()
 
+        # Determine if this is a JSON5 file based on extension
+        is_json5 = json_file.lower().endswith(".json5")
+
         try:
             pretty_contents = _get_pretty_format(
                 contents,
@@ -220,6 +240,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 ensure_ascii=args.ensure_ascii,
                 sort_keys=not args.no_sort_keys,
                 top_keys=args.top_keys,
+                is_json5=is_json5,
             )
         except ValueError:
             print(
