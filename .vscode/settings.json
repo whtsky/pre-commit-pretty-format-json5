@@ -1,152 +1,152 @@
 {
-    "[yaml]": {
-        "editor.tabSize": 2,
-        "editor.formatOnSave": false,
-        "editor.formatOnPaste": false,
-        "editor.formatOnType": false
-    },
-    "json.schemas": [
-        {
-            "fileMatch": ["Taskfile.yml"],
-            "url": "./hack/schemas/taskfile.json"
-        }
-    ],
-    "yaml.schemas": {
-        "https://taskfile.dev/schema.json": "**/Taskfile.yml",
-        "hack/schemas/mkdocs-material/schema.json": "mkdocs.yml"
-    },
-    "files.associations": {
-        "*.cheat": "markdown",
-        "Makefile.ci": "makefile",
-        "pyproject.toml*": "toml",
-        "*.just": "just"
-    },
-    "pylint.interpreter": ["${workspaceFolder}/.venv/bin/python"],
-    "pylint.args": [
-        "--enable=F,E,E1101",
-        "--disable=C0111,E0401,C,W,E1205",
-        "--max-line-length=120",
-        "--load-plugins",
-        "pylint_pydantic,pylint_per_file_ignores"
-    ],
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.autoFormatStrings": true,
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.inlayHints.functionReturnTypes": true,
-    "python.analysis.inlayHints.variableTypes": true,
-    "python.analysis.inlayHints.callArgumentNames": "all",
-    "python.terminal.activateEnvInCurrentTerminal": true,
-    "files.exclude": {
-        "**/__pycache__": true,
-        "**/*.pyc": true,
-        "**/pycache": true
-    },
-    // Editor settings for Python files
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["Taskfile.yml"],
+      "url": "./hack/schemas/taskfile.json"
+    }
+  ],
+  "yaml.schemas": {
+    "https://taskfile.dev/schema.json": "**/Taskfile.yml",
+    "hack/schemas/mkdocs-material/schema.json": "mkdocs.yml"
+  },
+  "files.associations": {
+    "*.cheat": "markdown",
+    "Makefile.ci": "makefile",
+    "pyproject.toml*": "toml",
+    "*.just": "just"
+  },
+  "pylint.interpreter": ["${workspaceFolder}/.venv/bin/python"],
+  "pylint.args": [
+    "--enable=F,E,E1101",
+    "--disable=C0111,E0401,C,W,E1205",
+    "--max-line-length=120",
+    "--load-plugins",
+    "pylint_pydantic,pylint_per_file_ignores"
+  ],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.inlayHints.callArgumentNames": "all",
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/pycache": true
+  },
+  // Editor settings for Python files
+  "editor.formatOnSave": true,
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportUnusedImport": "none",
+    "reportMissingImports": "error",
+    "reportImportCycles": "error",
+    "reportUnusedVariable": "none",
+    "reportMissingTypeStubs": "none",
+    "reportUnknownMemberType": "none",
+    "reportUnusedFunction": "warning",
+    "reportUnusedClass": "warning",
+    "reportIncompatibleMethodOverride": "none",
+    "reportGeneralTypeIssues": "information"
+  },
+  "notebook.formatOnSave.enabled": false,
+  "[python]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false
+  },
+  "[makefile]": {
     "editor.formatOnSave": true,
-    "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-    "python.analysis.inlayHints.pytestParameters": true,
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportUnusedImport": "none",
-        "reportMissingImports": "error",
-        "reportImportCycles": "error",
-        "reportUnusedVariable": "none",
-        "reportMissingTypeStubs": "none",
-        "reportUnknownMemberType": "none",
-        "reportUnusedFunction": "warning",
-        "reportUnusedClass": "warning",
-        "reportIncompatibleMethodOverride": "none",
-        "reportGeneralTypeIssues": "information"
+    "editor.tabSize": 4
+  },
+  "editor.inlineSuggest.showToolbar": "onHover",
+  "editor.renderWhitespace": "all",
+  "python.analysis.packageIndexDepths": [
+    {
+      "name": "langchain",
+      "depth": 3,
+      "includeAllSymbols": true
     },
-    "notebook.formatOnSave.enabled": false,
-    "[python]": {
-        "editor.formatOnSave": false,
-        "editor.defaultFormatter": "charliermarsh.ruff",
-        "editor.tabSize": 4,
-        "editor.formatOnPaste": false,
-        "editor.formatOnType": false
+    {
+      "name": "langgraph",
+      "depth": 3,
+      "includeAllSymbols": true
     },
-    "[makefile]": {
-        "editor.formatOnSave": true,
-        "editor.tabSize": 4
+    {
+      "name": "langchain_core",
+      "depth": 3,
+      "includeAllSymbols": true
     },
-    "editor.inlineSuggest.showToolbar": "onHover",
-    "editor.renderWhitespace": "all",
-    "python.analysis.packageIndexDepths": [
-        {
-            "name": "langchain",
-            "depth": 3,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "langgraph",
-            "depth": 3,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "langchain_core",
-            "depth": 3,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "langchain_community",
-            "depth": 3,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "discord",
-            "depth": 3,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "discord.ext.test",
-            "depth": 5,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "dpytest",
-            "depth": 5,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "gallery_dl",
-            "depth": 5,
-            "includeAllSymbols": true
-        },
-        {
-            "name": "loguru",
-            "depth": 5,
-            "includeAllSymbols": true
-        }
-    ],
-    "python.analysis.extraPaths": ["."],
-    "python.analysis.completeFunctionParens": true,
-    "python.analysis.indexing": true,
-    "python.languageServer": "Pylance",
-    "python.analysis.importFormat": "absolute",
-    "python.analysis.stubPath": "${workspaceFolder}/typings",
-    "python.analysis.autoSearchPaths": true,
-    "python.analysis.diagnosticMode": "openFilesOnly",
-    "python.analysis.includeAliasesFromUserFiles": true,
-    "python.analysis.inlayHints.parameterNames": true,
-    "python.analysis.inlayHints.parameterNamesStyle": "long",
-    "python.analysis.inlayHints.callArgumentNamesStyle": "long",
-    "python.analysis.enableEditableInstalls": true,
-    "editor.semanticHighlighting.enabled": true,
-    "workbench.editorAssociations": {
-        "*.mdc": "default"
+    {
+      "name": "langchain_community",
+      "depth": 3,
+      "includeAllSymbols": true
     },
-    // SOURCE: https://github.com/allthingslinux/tux/blob/7a7cd918d1c96ef11a8e65e11fee2bd8c692df67/.vscode/settings.json
-    "yaml.customTags": [
-        "!ENV scalar",
-        "!ENV sequence",
-        "!relative scalar",
-        "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
-        "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
-        "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
-        "tag:yaml.org,2002:python/name:mermaid2.fence_mermaid_custom",
-        "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping"
-    ],
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true
+    {
+      "name": "discord",
+      "depth": 3,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "discord.ext.test",
+      "depth": 5,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "dpytest",
+      "depth": 5,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "gallery_dl",
+      "depth": 5,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "loguru",
+      "depth": 5,
+      "includeAllSymbols": true
+    }
+  ],
+  "python.analysis.extraPaths": ["."],
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.indexing": true,
+  "python.languageServer": "Pylance",
+  "python.analysis.importFormat": "absolute",
+  "python.analysis.stubPath": "${workspaceFolder}/typings",
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.includeAliasesFromUserFiles": true,
+  "python.analysis.inlayHints.parameterNames": true,
+  "python.analysis.inlayHints.parameterNamesStyle": "long",
+  "python.analysis.inlayHints.callArgumentNamesStyle": "long",
+  "python.analysis.enableEditableInstalls": true,
+  "editor.semanticHighlighting.enabled": true,
+  "workbench.editorAssociations": {
+    "*.mdc": "default"
+  },
+  // SOURCE: https://github.com/allthingslinux/tux/blob/7a7cd918d1c96ef11a8e65e11fee2bd8c692df67/.vscode/settings.json
+  "yaml.customTags": [
+    "!ENV scalar",
+    "!ENV sequence",
+    "!relative scalar",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
+    "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
+    "tag:yaml.org,2002:python/name:mermaid2.fence_mermaid_custom",
+    "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping"
+  ],
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
 }
