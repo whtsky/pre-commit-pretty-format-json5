@@ -1,6 +1,5 @@
 from setuptools import setup
 
-
 setup(
     name="pretty_format_json5",
     version="0.0.1",
