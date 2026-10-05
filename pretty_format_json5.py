@@ -10,7 +10,6 @@ from typing import Union
 
 import json5
 
-
 # Forked from https://github.com/pre-commit/pre-commit-hooks/blob/f48244a8055c1d51955ee6312d8942db325672cf/pre_commit_hooks/check_json.py
 
 
